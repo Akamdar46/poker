@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-800;
+  }
+  
+  body {
+    @apply bg-gray-950 text-white font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl shadow-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:bg-gray-800/60 hover:border-gray-700 hover:shadow-xl;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  .btn-success {
+    @apply bg-success-600 hover:bg-success-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-warning {
+    @apply bg-warning-600 hover:bg-warning-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-error {
+    @apply bg-error-600 hover:bg-error-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .input {
+    @apply bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200;
+  }
+
+  .poker-table {
+    @apply bg-gradient-to-br from-poker-green to-poker-felt rounded-full border-8 border-amber-600 shadow-2xl;
+  }
+
+  .playing-card {
+    @apply bg-white text-black rounded-lg shadow-lg border border-gray-300 aspect-[2.5/3.5] flex flex-col justify-between p-2 text-sm font-bold cursor-pointer transition-all duration-200;
+  }
+
+  .playing-card:hover {
+    @apply transform scale-105 shadow-xl;
+  }
+
+  .playing-card.selected {
+    @apply ring-2 ring-primary-500 ring-offset-2 ring-offset-gray-900;
+  }
+
+  .playing-card.hearts,
+  .playing-card.diamonds {
+    @apply text-red-600;
+  }
+
+  .playing-card.clubs,
+  .playing-card.spades {
+    @apply text-black;
+  }
+
+  .stat-card {
+    @apply card p-6 text-center;
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold mb-2;
+  }
+
+  .stat-label {
+    @apply text-gray-400 text-sm uppercase tracking-wide;
+  }
+
+  .progress-bar {
+    @apply w-full bg-gray-700 rounded-full h-2 overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full transition-all duration-500 ease-out;
+  }
+
+  .tooltip {
+    @apply absolute z-50 px-2 py-1 text-xs bg-gray-800 text-white rounded shadow-lg pointer-events-none;
+  }
+
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-up {
+    @apply animate-slide-up;
+  }
+
+  .pulse-slow {
+    @apply animate-pulse-slow;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+    height: 1px;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+
+  .glow-warning {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+
+  .glow-error {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Loading animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Card flip animation */
+.card-flip {
+  @apply animate-card-flip;
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  .playing-card {
+    @apply text-xs p-1;
+  }
+  
+  .stat-value {
+    @apply text-2xl;
+  }
+}
