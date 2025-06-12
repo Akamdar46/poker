@@ -1,2 +1,4 @@
 flask
 treys
+numpy
+scipy
